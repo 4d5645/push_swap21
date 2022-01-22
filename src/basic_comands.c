@@ -32,15 +32,17 @@ void	push(t_list **stack_dest, t_list **stack_src)
 void	rotate(t_list **stack)
 {
 	t_list	*start;
+	t_list	*end;
 
 	if (*stack != 0)
 	{
 		start = *stack;
-		while ((*stack)->next)
-			(*stack) = (*stack)->next;
-		start = start->next;
+		*stack = (*stack)->next;
+		end = *stack;
 		start->next = NULL;
-		(*stack)->next = start;
+		while (end->next)
+			end = end->next;
+		end->next = start;
 	}
 	else
 		return ;

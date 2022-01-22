@@ -29,9 +29,9 @@ void    sort_three(t_list **stack)
 	third = second->next;
 	if ((second->content > third->content) || ((*stack)->content < third->content))
 		swap(stack);
-	if ((*stack)->content > second->content && (*stack)->content < third->content)
-	 	return (swap(stack));
-	if ((*stack)->content > second->content && (*stack)->content > third->content)
-	 	return (rotate(stack));
+	if ((*stack)->content > second->content || (*stack)->content < third->content)
+	 	swap(stack);
+	if ((*stack)->content > second->content || (*stack)->content > third->content)
+	 	rotate(stack);
 	return (reverse_rotate(stack));
 }
