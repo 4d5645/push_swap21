@@ -1,6 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lists.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gdara <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/02 19:23:50 by gdara             #+#    #+#             */
+/*   Updated: 2022/02/02 19:23:50 by gdara            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../inc/pushswap.h"
 
-t_list *ft_lstnew(int content)
+/*
+** Just functions that needed to be written in the bonus part of the libft
+*/
+
+t_list	*ft_lstnew(int content)
 {
 	t_list	*elem;
 
@@ -12,7 +27,7 @@ t_list *ft_lstnew(int content)
 	return (elem);
 }
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!lst && !(*lst))
 	{
@@ -20,27 +35,13 @@ void ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	new->next = *lst;	//в следующий элемент после new закидываем то, что лежало по адресу lst
-	*lst = new; //по адресу lst располагаем то, что хранится в new
+	new->next = *lst;
+	*lst = new;
 	return ;
-}
-
-int ft_lstsize(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
 }
 
 t_list	*ft_lstlast(t_list *lst)
 {
-
 	if (!lst)
 		return (0);
 	while (lst->next != NULL)
@@ -56,21 +57,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	if (lst != 0 && *lst != 0)
 	{
-		f = ft_lstlast(*lst);	//записываем в f последний элемент списка
+		f = ft_lstlast(*lst);
 		f->next = new;
 	}
 	else
 		*lst = new;
-}
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (!lst)
-		return ;
-	(void)del;
-	lst->next = NULL;
-	free(lst);
-	lst = NULL;
 }
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
@@ -78,11 +69,16 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*cur;
 	t_list	*next;
 
+	if (!lst)
+		return ;
 	cur = *lst;
 	while (cur)
 	{
 		next = cur->next;
-		ft_lstdelone(cur, del);
+		(void)del;
+		cur->next = NULL;
+		free(cur);
+		cur = NULL;
 		cur = next;
 	}
 	*lst = NULL;

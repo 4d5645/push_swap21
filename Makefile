@@ -4,13 +4,13 @@ HDR = pushswap.h
 
 HDR_DIR = inc/
 
-CC = cc
+CC = gcc -g -Wall -Wextra -Werror
 
 RM = rm -f
 
 NAME = push_swap
 
-SRC = lists.c pushswap_main.c initialization.c modified_comands.c basic_comands.c write_and_close.c sort_three.c
+SRC = lists.c pushswap_main.c initialization.c modified_comands.c basic_comands.c write_and_close.c sort_three.c array_sort.c write_and_runcommand.c
 
 SRC_DIR = src/
 
