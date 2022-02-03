@@ -40,7 +40,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	return ;
 }
 
-t_list	*ft_lstlast(t_list *lst)
+static t_list	*ft_lstlast(t_list *lst)
 {
 	if (!lst)
 		return (0);

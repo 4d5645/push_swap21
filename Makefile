@@ -1,30 +1,40 @@
-CFLAGS = -Wall -Wextra -Werror
-
-HDR = pushswap.h
-
-HDR_DIR = inc/
-
-CC = gcc -g -Wall -Wextra -Werror
-
-RM = rm -f
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gdara <marvin@42.fr>                       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/02/03 10:21:06 by gdara             #+#    #+#              #
+#    Updated: 2022/02/03 10:21:11 by gdara            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = push_swap
 
-SRC = lists.c pushswap_main.c initialization.c modified_comands.c basic_comands.c write_and_close.c sort_three.c array_sort.c write_and_runcommand.c
+CC = gcc -g
+
+CFLAGS = -Wall -Wextra -Werror
+
+HDR_DIR = inc/
 
 SRC_DIR = src/
 
-LIBFT_NAME = libft.a
-
 LIBFTDIR = ./libft/
 
-LIBFT = $(addprefix ${LIBFTDIR}, ${LIBFT_NAME})
+RM = rm -f
+
+HDR = pushswap.h
+
+SRC = lists.c pushswap_main.c initialization.c basic_comands.c write_and_close.c sort_three.c array_sort.c write_and_runcommand.c
+
+LIBFT_NAME = libft.a
 
 HEADERS = $(addprefix ${HDRS_DIR}, ${HDRS})
 
 SOURCES = $(addprefix ${SRC_DIR}, ${SRC})
 
-.PHONY:	clean all fclean re
+LIBFT = $(addprefix ${LIBFTDIR}, ${LIBFT_NAME})
 
 all:	${LIBFT} ${NAME}
 
@@ -42,3 +52,5 @@ fclean:		clean
 	${MAKE} fclean -C ${LIBFTDIR}
 
 re:	fclean all
+
+.PHONY:	clean all fclean re

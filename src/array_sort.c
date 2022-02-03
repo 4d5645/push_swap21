@@ -38,7 +38,7 @@ int	*ft_fill_array(t_list **stack, int n)
 ** Swap 2 elements
 */
 
-void	swap_bubble(int *a, int *b)
+static void	swap_bubble(int *a, int *b)
 {
 	int	c;
 

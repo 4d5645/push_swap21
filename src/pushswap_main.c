@@ -18,7 +18,7 @@
 ** Do sorting depending on the number of input arguments.
 */
 
-void	sort(t_list **stack_a, t_list **stack_b, int *indicies, int count)
+static void	sort(t_list **stack_a, t_list **stack_b, int *indicies, int count)
 {
 	bubble_sort(indicies, count);
 	initialize_indicies(stack_a, indicies, count);

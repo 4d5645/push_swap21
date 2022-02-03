@@ -41,7 +41,7 @@ int	a_is_sorted(t_list **stack)
 ** Just a function to check that all input arguments are int numbers
 */
 
-void	check_argvs(int argc, char **argv)
+static void	check_argvs(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -71,7 +71,7 @@ void	check_argvs(int argc, char **argv)
 ** Just a function to check that there are no duplicate arguments
 */
 
-void	check_duplicates(int argc, char **argv)
+static void	check_duplicates(int argc, char **argv)
 {
 	int	i;
 	int	j;

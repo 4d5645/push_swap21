@@ -19,7 +19,7 @@
 ** This is a small presort so that the algorithm can cope faster
 */
 
-void	presort(t_list **stack_a, t_list **stack_b)
+static void	presort(t_list **stack_a, t_list **stack_b)
 {
 	int	threshold;
 
@@ -40,7 +40,7 @@ void	presort(t_list **stack_a, t_list **stack_b)
 ** Just count the number of steps to the element with the highest index
 */
 
-int	cost_of_push(t_list *stack_b, int index)
+static int	cost_of_push(t_list *stack_b, int index)
 {
 	int	i;
 
