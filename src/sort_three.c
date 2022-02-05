@@ -19,11 +19,14 @@
 ** This is a small presort so that the algorithm can cope faster
 */
 
-static void	presort(t_list **stack_a, t_list **stack_b)
+static void	presort(t_list **stack_a, t_list **stack_b, int count)
 {
 	int	threshold;
 
-	threshold = 20;
+	if (count <= 100)
+		threshold = 8;
+	else
+		threshold = 20;
 	while (*stack_a != NULL)
 	{
 		if ((*stack_a)->index > threshold)
@@ -69,7 +72,7 @@ void	sort_a_lot(t_list **stack_a, t_list **stack_b, int count)
 	int	cost;
 	int	max_index;
 
-	presort(stack_a, stack_b);
+	presort(stack_a, stack_b, count);
 	max_index = count - 1;
 	while (*stack_b)
 	{
